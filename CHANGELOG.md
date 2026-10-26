@@ -2,6 +2,28 @@
 
 All notable changes to `mjml-sidecar` will be documented in this file.
 
+## 1.1.101 - 2026-10-26
+
+### What's Changed
+
+* Bump the Lambda's `mjml` dependency from 4.x to 5.4.1. This clears every advisory `npm audit` reported for the 4.x tree (`mj-include` directory traversal in mjml, `html-minifier` ReDoS, `lodash` prototype pollution, `brace-expansion`/`minimatch`/`picomatch`/`braces` ReDoS).
+* Add `cssnano` as a direct Lambda dependency. mjml 5 minifies with `htmlnano`, which cannot resolve the `cssnano` copy mjml-core nests under its own `node_modules`, so `minify: true` silently skipped CSS minification.
+* Regenerate `lambda/package-lock.json` and the committed `lambda/node_modules`.
+
+Note: mjml 5 ignores `mj-include` by default (`ignoreIncludes: true`). `spatie/mjml-php` keeps sending `ignoreIncludes: false`, so behaviour is unchanged for that client.
+
+## 1.1.100 - 2026-10-26
+
+### What's Changed
+
+* The Lambda handler awaits `mjml2html`, which is asynchronous from mjml 5 on. With mjml 4 the await is a no-op. This tag still ships mjml 4.x; use 1.1.101 for the mjml 5 tree.
+
+## 1.1.99 - 2026-05-19
+
+### What's Changed
+
+* Add Laravel 13 to the `illuminate/contracts` constraint.
+
 ## 1.1.1 - 2025-07-14
 
 ### What's Changed

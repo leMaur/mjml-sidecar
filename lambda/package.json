@@ -1,6 +1,7 @@
 {
     "type": "module",
     "dependencies": {
-        "mjml": "^4.14.1"
+        "cssnano": "^8.0.10",
+        "mjml": "^5.4.1"
     }
 }
