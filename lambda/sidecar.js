@@ -4,7 +4,7 @@ export const handle = async function (event) {
     let result = ''
 
     try {
-        result = mjml2html(event.mjml, event.options);
+        result = await mjml2html(event.mjml, event.options);
     } catch (exception) {
         return JSON.stringify({mjmlError: exception.toString()});
     }
